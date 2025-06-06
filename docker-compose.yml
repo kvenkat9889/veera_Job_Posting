@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14
+    container_name: job_posting_postgres
+    ports:
+      - "5114:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: job_post
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./Backend
+    container_name: job_posting_backend
+    ports:
+      - "3335:3335"
+    depends_on:
+      - postgres
+    environment:
+      - PGUSER=postgres
+      - PGPASSWORD=admin123
+      - PGDATABASE=job_post
+      - PGHOST=postgres
+    restart: always
+
+  frontend:
+    build: ./Fronted
+    container_name: job_posting_frontend
+    ports:
+      - "8119:80"
+    restart: always
+
+  hr:
+    build: ./Hr
+    container_name: job_posting_hr
+    ports:
+      - "8120:80"
+    restart: always
+
+volumes:
+  pgdata:
+
