@@ -3,14 +3,14 @@ const { Pool } = require('pg');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = 3335;
 
 // PostgreSQL configuration
 const pool = new Pool({
     user: 'postgres',
-    host: 'localhost',
+    host: 'postgres',
     database: 'job_post',
-    password: 'Veera@0134',
+    password: 'admin123',
     port: 5432,
 });
 
@@ -90,5 +90,5 @@ app.post('/api/jobs', async (req, res) => {
 // Start server
 app.listen(port, async () => {
     await initializeDatabase();
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on http://3.88.203.125:${port}`);
 });

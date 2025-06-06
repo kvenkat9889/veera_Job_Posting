@@ -920,7 +920,7 @@
                 };
 
                 try {
-                    const response = await fetch('http://localhost:3000/api/jobs', {
+                    const response = await fetch('http://3.88.203.125:3335/api/jobs', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -962,7 +962,7 @@
                     </div>
                 `;
 
-                const response = await fetch('http://localhost:3000/api/jobs');
+                const response = await fetch('http://3.88.203.125:3335/api/jobs');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
